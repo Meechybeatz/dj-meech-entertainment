@@ -209,8 +209,23 @@
           </div>
         </div>
 
-        <form name="booking" method="POST" data-netlify="true" action="/thank-you.html">
+     <form
+  id="bookingForm"
+  name="booking"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  action="/thank-you.html"
+>
+ 
   <input type="hidden" name="form-name" value="booking">
+
+          <p hidden>
+            <label>
+            Don't fill this out:
+            <input name="bot-field">
+            </label>
+          </p>
           <div class="field-row">
             <label>Name
               <input type="text" name="name" autocomplete="name" required />
@@ -249,7 +264,7 @@
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
-    </section>
+    </section> 
   </main>
 
   <footer>
@@ -261,31 +276,5 @@
       <p>© 2026 DJ Meech Entertainment. All rights reserved.</p>
     </div>
   </footer>
-
-  <script>
-    // Build a reliable mailto from the form fields (plain mailto POST fails silently in most browsers).
-    (function () {
-      var form = document.getElementById('bookingForm');
-      var status = document.getElementById('formStatus');
-      if (!form) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var f = form.elements;
-        var subject = 'Booking request — ' + (f.name.value || 'New event');
-        var body =
-          'Name: ' + f.name.value + '\n' +
-          'Contact: ' + f.contact.value + '\n' +
-          'Event date: ' + f.date.value + '\n' +
-          'Event type: ' + f.type.value + '\n' +
-          'Location: ' + f.location.value + '\n\n' +
-          'Details:\n' + f.details.value + '\n';
-        var href = 'mailto:djmeechentertainment@gmail.com' +
-          '?subject=' + encodeURIComponent(subject) +
-          '&body=' + encodeURIComponent(body);
-        window.location.href = href;
-        status.textContent = 'Opening your email app to send the request…';
-      });
-    })();
-  </script>
 </body>
 </html>
