@@ -209,7 +209,8 @@
           </div>
         </div>
 
-        <form id="bookingForm" action="mailto:djmeechentertainment@gmail.com" method="post" enctype="text/plain">
+        <form name="booking" method="POST" data-netlify="true" action="/thank-you.html">
+  <input type="hidden" name="form-name" value="booking">
           <div class="field-row">
             <label>Name
               <input type="text" name="name" autocomplete="name" required />
